@@ -455,6 +455,25 @@ setInterval(()=>{
     page3.style.display = "block";
     window.scrollTo({ top: 0, behavior: "smooth" });
 };
+    document.addEventListener("DOMContentLoaded", () => {
+
+    const btn = document.getElementById("toPage3");
+    if(btn){
+        btn.onclick = () => {
+            page2.style.display = "none";
+            page3.style.display = "block";
+            window.scrollTo({ top: 0, behavior: "smooth" });
+
+            // Page-3 music (optional)
+            const m = document.getElementById("memMusic");
+            if(m){
+                m.volume = 0.3;
+                m.play().catch(()=>{});
+            }
+        };
+    }
+
+});
 </script>
     <div class="memories-btn-wrap">
     <button id="toPage3" class="memories-btn">
