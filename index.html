@@ -222,12 +222,25 @@ html{scroll-behavior:smooth;}
     float:left;
     margin-right:6px;
 }
+    /* 🔥 SCROLL REVEAL + FADE-IN */
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+    transition:all 1.1s ease;
+}
 </style>
 </head>
 
 <body>
 
-<audio autoplay loop><source src="music.mp3"></audio>
+<audio id="bgMusic" loop>
+    <source src="music.mp3">
+</audio>
 <audio id="cutSound"><source src="cut.mp3"></audio>
 <audio id="tickSound"><source src="tick.mp3"></audio>
 
@@ -244,32 +257,32 @@ html{scroll-behavior:smooth;}
 <div id="page2">
     <h1 id="name"></h1>
 
-    <div class="block">
+    <div class="block reveal">
         <div class="insta"><img src="photo1.jpg"></div>
         <div class="msg">Tumhari smile Instagram feed jaisi perfect hai 💖</div>
     </div>
 
-    <div class="block">
+    <div class="block reveal">
         <div class="circle"><img src="photo2.jpg"></div>
         <div class="msg">Simple si, par sabse zyada special 🌸</div>
     </div>
 
-    <div class="block">
+    <div class="block reveal">
         <div class="star"><img src="photo3.jpg"></div>
         <div class="msg">Star to tum ho ✨ bina filter ke</div>
     </div>
 
-    <div class="block">
+    <div class="block reveal">
         <div class="polaroid"><img src="photo4.jpg"></div>
         <div class="msg">Ye photo ek memory jaisi lagti hai 📸</div>
     </div>
 
-    <div class="block">
+    <div class="block reveal">
         <div class="insta"><img src="photo5.jpg"></div>
         <div class="msg">Bas aise hi hamesha khush rehna 💕</div>
     </div>
 
-    <div class="box">
+    <div class="box reveal">
 Riya 💕<br><br>
 “Kuchh log lafzon me bayan nahi hote,  
 bas mehsoos kiye jaate hain…” ✨  
@@ -312,7 +325,10 @@ let t=setInterval(()=>{
 },1000);
 
 knife.onclick=()=>{
+    document.getElementById("bgMusic").play().catch(()=>{});
+    document.getElementById("tickSound").play().catch(()=>{});
     document.getElementById("cutSound").play();
+
     cake.innerText="🍰";
     surprise.style.display="block";
     hint.style.display="none";
@@ -346,6 +362,15 @@ setInterval(()=>{
     document.body.appendChild(h);
     setTimeout(()=>h.remove(),6000);
 },500);
+    /* 🔥 SCROLL REVEAL EFFECT */
+window.addEventListener("scroll",()=>{
+    document.querySelectorAll(".reveal").forEach(el=>{
+        let top = el.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100){
+            el.classList.add("active");
+        }
+    });
+});
 </script>
 
 </body>
