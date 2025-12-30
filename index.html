@@ -476,17 +476,29 @@ setInterval(()=>{
 });
     document.addEventListener("click", function(e){
 
-    // PAGE-2 → PAGE-3 BUTTON
-    if(e.target && e.target.id === "toPage3"){
+    // === CREATE BUTTON INSIDE SCRIPT ===
+const page2 = document.getElementById("page2");
+const page3 = document.getElementById("page3");
+const page4 = document.getElementById("page4");
 
-        const p2 = document.getElementById("page2");
-        const p3 = document.getElementById("page3");
+// PAGE-2 BUTTON CREATE
+if(page2){
+    const wrap = document.createElement("div");
+    wrap.className = "memories-btn-wrap";
 
-        if(p2 && p3){
-            p2.style.display = "none";
-            p3.style.display = "block";
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        }
+    const btn = document.createElement("button");
+    btn.id = "toPage3";
+    btn.className = "memories-btn";
+    btn.innerHTML = "🤍 Our Friendship Memories 🤍";
+
+    wrap.appendChild(btn);
+    page2.appendChild(wrap);
+
+    // CLICK EVENT
+    btn.addEventListener("click", () => {
+        page2.style.display = "none";
+        page3.style.display = "block";
+        window.scrollTo({ top: 0, behavior: "smooth" });
 
         // Page-3 background music
         const m = document.getElementById("memMusic");
@@ -494,21 +506,16 @@ setInterval(()=>{
             m.volume = 0.3;
             m.play().catch(()=>{});
         }
-    }
+    });
+}
 
-    // PAGE-3 → PAGE-4 BUTTON
+// PAGE-3 → PAGE-4 BUTTON (already HTML me ho to bhi chalega)
+document.addEventListener("click", (e)=>{
     if(e.target && e.target.id === "toPage4"){
-
-        const p3 = document.getElementById("page3");
-        const p4 = document.getElementById("page4");
-
-        if(p3 && p4){
-            p3.style.display = "none";
-            p4.style.display = "flex";
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        }
+        page3.style.display = "none";
+        page4.style.display = "flex";
+        window.scrollTo({ top: 0, behavior: "smooth" });
     }
-
 });
 </script>
     <div class="memories-btn-wrap">
