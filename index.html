@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Riya 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;500;600&family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+/* GLOBAL */
+html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    overflow-y:auto;
+    overflow-x:hidden;
+    background:black;
+    font-family:'Segoe UI',sans-serif;
+}
+html{scroll-behavior:smooth;}
+
+/* FLOATING HEARTS */
+.heart{
+    position:fixed;
+    bottom:-10px;
+    font-size:20px;
+    animation:float 6s linear infinite;
+    pointer-events:none;
+}
+@keyframes float{
+    0%{transform:translateY(0);opacity:1}
+    100%{transform:translateY(-110vh);opacity:0}
+}
+
+/* PAGE 1 */
+#page1{
+    min-height:100vh;
+    background:black;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+#count{
+    font-family:'Orbitron',sans-serif;
+    font-size:5.2rem;
+    letter-spacing:6px;
+    color:#ff69b4;
+    text-shadow:0 0 10px #ff69b4,0 0 20px #c77dff;
+    animation:pulse 1s infinite;
+}
+@keyframes pulse{
+    0%{opacity:0}
+    50%{opacity:1}
+    100%{opacity:0}
+}
+
+#cake{
+    display:none;
+    font-size:7rem;
+    animation:bounce 1.5s infinite;
+}
+@keyframes bounce{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-15px)}
+}
+
+#knife{
+    display:none;
+    font-size:3.5rem;
+    cursor:pointer;
+    margin-top:15px;
+    animation:knifeMove 1s infinite alternate;
+}
+@keyframes knifeMove{
+    from{transform:translateX(-8px)}
+    to{transform:translateX(8px)}
+}
+
+/* KNIFE HINT */
+#knifeHint{
+    margin-top:10px;
+    font-family:'Dancing Script',cursive;
+    font-size:1.4rem;
+    color:#ffb6c1;
+    letter-spacing:2px;
+    opacity:0;
+    animation:fadeHint 1.5s ease forwards, glowHint 2.5s ease-in-out infinite;
+}
+@keyframes fadeHint{
+    from{opacity:0; transform:translateY(8px);}
+    to{opacity:1; transform:translateY(0);}
+}
+@keyframes glowHint{
+    0%{text-shadow:0 0 6px #ff69b4;}
+    50%{text-shadow:0 0 16px #c77dff;}
+    100%{text-shadow:0 0 6px #ff69b4;}
+}
+
+/* SURPRISE TEXT */
+#surprise{
+    display:none;
+    font-family:'Great Vibes',cursive;
+    font-size:3rem;
+    color:#ffd1e8;
+    letter-spacing:3px;
+    margin-top:18px;
+    animation:surprisePop 1.4s ease forwards;
+    text-shadow:0 0 10px #ff69b4,0 0 25px #c77dff;
+}
+@keyframes surprisePop{
+    from{opacity:0;transform:scale(0.6) translateY(10px)}
+    to{opacity:1;transform:scale(1) translateY(0)}
+}
+
+/* PAGE 2 */
+#page2{
+    display:none;
+    min-height:100vh;
+    background:
+        radial-gradient(circle at top right, rgba(255,105,180,0.35), transparent 40%),
+        radial-gradient(circle at bottom left, rgba(157,78,221,0.35), transparent 45%),
+        linear-gradient(135deg,#0b0b14,#1a0f2e,#2b1055);
+    padding:20px;
+    color:white;
+}
+
+/* NAME */
+#name{
+    font-family:'Great Vibes',cursive;
+    font-size:3.6rem;
+    text-align:center;
+    white-space:pre-line;
+}
+.glow{
+    animation:gradientGlow 3s ease-in-out infinite;
+}
+@keyframes gradientGlow{
+    0%{text-shadow:0 0 6px #ff69b4,0 0 12px #c77dff;}
+    50%{text-shadow:0 0 20px #9d4edd,0 0 40px #ff85c1;}
+    100%{text-shadow:0 0 6px #ff69b4,0 0 12px #c77dff;}
+}
+
+/* PHOTO BLOCKS */
+.block{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin:40px 0;
+}
+.block:nth-child(even){flex-direction:row-reverse;}
+
+.msg{
+    font-family:'Dancing Script',cursive;
+    font-size:1.2rem;
+    background:rgba(255,255,255,0.9);
+    color:#333;
+    padding:14px 18px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.35);
+}
+
+.insta{
+    width:140px;
+    background:white;
+    padding:6px;
+    border-radius:16px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.4);
+}
+.insta img{width:100%;border-radius:12px}
+
+.circle{
+    width:140px;height:140px;
+    border-radius:50%;
+    overflow:hidden;
+    border:5px solid #ff69b4;
+    box-shadow:0 0 25px rgba(255,105,180,0.6);
+}
+.circle img{width:100%;height:100%;object-fit:cover}
+
+.star{
+    width:150px;
+    clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+    overflow:hidden;
+    box-shadow:0 0 25px rgba(157,78,221,0.8);
+}
+.star img{width:100%;height:100%;object-fit:cover}
+
+.polaroid{
+    width:150px;
+    background:white;
+    padding:8px 8px 20px;
+    border-radius:10px;
+    transform:rotate(-4deg);
+    box-shadow:0 12px 25px rgba(0,0,0,0.4);
+}
+.polaroid img{width:100%;border-radius:8px}
+
+/* PAPER MESSAGE */
+.box{
+    margin:50px auto;
+    padding:28px;
+    max-width:90%;
+    background:repeating-linear-gradient(white,white 28px,#f3e6ff 29px);
+    color:#2f2f3a;
+    font-family:'Dancing Script',cursive;
+    font-size:1.35rem;
+    line-height:1.9;
+    border-radius:12px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.35);
+    transform:rotate(0.7deg);
+}
+.box::first-letter{
+    font-size:2.6rem;
+    font-weight:600;
+    color:#ff69b4;
+    float:left;
+    margin-right:6px;
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop><source src="music.mp3"></audio>
+<audio id="cutSound"><source src="cut.mp3"></audio>
+<audio id="tickSound"><source src="tick.mp3"></audio>
+
+<!-- PAGE 1 -->
+<div id="page1">
+    <div id="count">⏳ 3</div>
+    <div id="cake">🎂</div>
+    <div id="knife">🔪</div>
+    <div id="knifeHint">✨ tap to cut ✨</div>
+    <div id="surprise">Surprise ✨</div>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2">
+    <h1 id="name"></h1>
+
+    <div class="block">
+        <div class="insta"><img src="photo1.jpg"></div>
+        <div class="msg">Tumhari smile Instagram feed jaisi perfect hai 💖</div>
+    </div>
+
+    <div class="block">
+        <div class="circle"><img src="photo2.jpg"></div>
+        <div class="msg">Simple si, par sabse zyada special 🌸</div>
+    </div>
+
+    <div class="block">
+        <div class="star"><img src="photo3.jpg"></div>
+        <div class="msg">Star to tum ho ✨ bina filter ke</div>
+    </div>
+
+    <div class="block">
+        <div class="polaroid"><img src="photo4.jpg"></div>
+        <div class="msg">Ye photo ek memory jaisi lagti hai 📸</div>
+    </div>
+
+    <div class="block">
+        <div class="insta"><img src="photo5.jpg"></div>
+        <div class="msg">Bas aise hi hamesha khush rehna 💕</div>
+    </div>
+
+    <div class="box">
+Riya 💕<br><br>
+“Kuchh log lafzon me bayan nahi hote,  
+bas mehsoos kiye jaate hain…” ✨  
+Aur tum unhi logon me se ho 💖<br><br>
+
+Tumhari smile me ek alag si warmth hai,  
+jo bina bole hi din ko thoda aur beautiful bana deti hai 🌼  
+Tumhari simplicity aur tumhari vibe —  
+dono hi bahut special hain ✨<br><br>
+
+🎂 Happy Birthday Riya 💖  
+Hamesha aise hi khud jaisi rehna —  
+beautiful, kind, aur thodi si magical ✨
+    </div>
+</div>
+
+<script>
+let num=3;
+const emo={3:"⏳",2:"⏰",1:"🎉"};
+let count=document.getElementById("count");
+let cake=document.getElementById("cake");
+let knife=document.getElementById("knife");
+let hint=document.getElementById("knifeHint");
+let surprise=document.getElementById("surprise");
+let tick=document.getElementById("tickSound");
+
+let t=setInterval(()=>{
+    tick.play();
+    if(navigator.vibrate){navigator.vibrate(120);}
+    num--;
+    if(num>0){
+        count.innerHTML=`${emo[num]} ${num}`;
+    }else{
+        clearInterval(t);
+        count.style.display="none";
+        cake.style.display="block";
+        knife.style.display="block";
+        hint.style.opacity=1;
+    }
+},1000);
+
+knife.onclick=()=>{
+    document.getElementById("cutSound").play();
+    cake.innerText="🍰";
+    surprise.style.display="block";
+    hint.style.display="none";
+    setTimeout(()=>{
+        page1.style.display="none";
+        page2.style.display="block";
+        window.scrollTo({top:0,behavior:"smooth"});
+        typeName();
+    },1500);
+};
+
+const text="Happy Birthday\nRiya 💖";
+let i=0;
+function typeName(){
+    if(i<text.length){
+        document.getElementById("name").innerHTML+=text.charAt(i);
+        i++;
+        setTimeout(typeName,120);
+    }else{
+        document.getElementById("name").classList.add("glow");
+    }
+}
+
+/* FLOATING HEARTS */
+setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerText="💖";
+    h.style.left=Math.random()*100+"vw";
+    h.style.fontSize=(15+Math.random()*20)+"px";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+},500);
+</script>
+
+</body>
+</html>
