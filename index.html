@@ -474,6 +474,42 @@ setInterval(()=>{
     }
 
 });
+    document.addEventListener("click", function(e){
+
+    // PAGE-2 → PAGE-3 BUTTON
+    if(e.target && e.target.id === "toPage3"){
+
+        const p2 = document.getElementById("page2");
+        const p3 = document.getElementById("page3");
+
+        if(p2 && p3){
+            p2.style.display = "none";
+            p3.style.display = "block";
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        // Page-3 background music
+        const m = document.getElementById("memMusic");
+        if(m){
+            m.volume = 0.3;
+            m.play().catch(()=>{});
+        }
+    }
+
+    // PAGE-3 → PAGE-4 BUTTON
+    if(e.target && e.target.id === "toPage4"){
+
+        const p3 = document.getElementById("page3");
+        const p4 = document.getElementById("page4");
+
+        if(p3 && p4){
+            p3.style.display = "none";
+            p4.style.display = "flex";
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }
+
+});
 </script>
     <div class="memories-btn-wrap">
     <button id="toPage3" class="memories-btn">
