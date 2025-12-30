@@ -362,15 +362,6 @@ setInterval(()=>{
     document.body.appendChild(h);
     setTimeout(()=>h.remove(),6000);
 },500);
-    /* 🔥 SCROLL REVEAL EFFECT */
-window.addEventListener("scroll",()=>{
-    document.querySelectorAll(".reveal").forEach(el=>{
-        let top = el.getBoundingClientRect().top;
-        if(top < window.innerHeight - 100){
-            el.classList.add("active");
-        }
-    });
-});
 </script>
 
 </body>
