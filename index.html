@@ -386,7 +386,72 @@ Hamesha aise hi khud jaisi rehna —
 beautiful, kind, aur thodi si magical ✨
     </div>
 </div>
+<div class="memories-btn-wrap">
+    <button id="toPage3" class="memories-btn">
+        🤍 Our Friendship Memories 🤍
+    </button>
+    </div>
+<!-- PAGE 3 : MEMORIES -->
+<div id="page3" style="display:none; min-height:100vh; padding:30px;
+background:linear-gradient(135deg,#0b0b14,#1a0f2e,#2b1055); color:white;">
 
+    <h1 style="font-family:'Great Vibes',cursive;
+    font-size:3rem; text-align:center; margin-bottom:20px;">
+        Our Memories 💖
+    </h1>
+
+    <p style="font-family:'Dancing Script',cursive;
+    font-size:1.4rem; text-align:center; max-width:800px;
+    margin:0 auto 40px; line-height:1.8;
+    background:rgba(255,255,255,0.9); color:#333;
+    padding:20px; border-radius:14px;">
+        Hum log ka dost banna,<br>
+        bhagwan ka diya hua<br>
+        <b>sabse achha gift</b> hai 💫
+    </p>
+
+    <div class="mem-grid">
+        <div class="insta mem-photo">
+            <img src="mem1.jpg">
+            <span class="overlay">❤️ 12 Jan 2023</span>
+        </div>
+        <div class="insta mem-photo">
+            <img src="mem2.jpg">
+            <span class="overlay">❤️ Forever</span>
+        </div>
+    </div>
+
+    <div style="text-align:center; margin:60px 0;">
+        <button id="toPage4" class="memories-btn">
+            🤍 Thank You 🤍
+        </button>
+    </div>
+</div>
+    <button class="memories-btn" onclick="goToPage4()">
+    🤍 Thank You 🤍
+    </button>
+    <!-- PAGE 4 : THANK YOU (HANDWRITTEN) -->
+<div id="page4" class="page4">
+    <div class="paper">
+        <h1 class="paper-title">Thank You 💖</h1>
+
+        <p class="paper-text">
+            Agar ye chhota sa surprise<br>
+            tumhare chehre pe ek pyari si smile laa saka,<br>
+            to meri mehnat safal ho gayi 🤍<br><br>
+
+            Tumhari dosti meri zindagi ka<br>
+            <span class="highlight">sabse khoobsurat gift</span> hai ✨<br><br>
+
+            Shayad hum hamesha saath na ho,<br>
+            par ye yaadein hamesha mere saath rahengi 💫
+        </p>
+
+        <div class="sign">
+            — From someone who values you 🌸
+        </div>
+    </div>
+</div>
 <script>
 let num=3;
 const emo={3:"⏳",2:"⏰",1:"🎉"};
@@ -462,19 +527,7 @@ setInterval(()=>{
         btn.onclick = () => {
             page2.style.display = "none";
             page3.style.display = "block";
-            window.scrollTo({ top: 0, behavior: "smooth" });
-
-            // Page-3 music (optional)
-            const m = document.getElementById("memMusic");
-            if(m){
-                m.volume = 0.3;
-                m.play().catch(()=>{});
-            }
-        };
-    }
-
-});
-    document.addEventListener("click", function(e){
+            window.scrollTo({ top: 0, behavior: "smooth" })
 
 // ===== COUNTDOWN FIX =====
 window.addEventListener("load", function(){
@@ -516,71 +569,5 @@ window.addEventListener("load", function(){
 });
 
 </script>
-    <div class="memories-btn-wrap">
-    <button id="toPage3" class="memories-btn">
-        🤍 Our Friendship Memories 🤍
-    </button>
-    </div>
-<!-- PAGE 3 : MEMORIES -->
-<div id="page3" style="display:none; min-height:100vh; padding:30px;
-background:linear-gradient(135deg,#0b0b14,#1a0f2e,#2b1055); color:white;">
-
-    <h1 style="font-family:'Great Vibes',cursive;
-    font-size:3rem; text-align:center; margin-bottom:20px;">
-        Our Memories 💖
-    </h1>
-
-    <p style="font-family:'Dancing Script',cursive;
-    font-size:1.4rem; text-align:center; max-width:800px;
-    margin:0 auto 40px; line-height:1.8;
-    background:rgba(255,255,255,0.9); color:#333;
-    padding:20px; border-radius:14px;">
-        Hum log ka dost banna,<br>
-        bhagwan ka diya hua<br>
-        <b>sabse achha gift</b> hai 💫
-    </p>
-
-    <div class="mem-grid">
-        <div class="insta mem-photo">
-            <img src="mem1.jpg">
-            <span class="overlay">❤️ 12 Jan 2023</span>
-        </div>
-        <div class="insta mem-photo">
-            <img src="mem2.jpg">
-            <span class="overlay">❤️ Forever</span>
-        </div>
-    </div>
-
-    <div style="text-align:center; margin:60px 0;">
-        <button id="toPage4" class="memories-btn">
-            🤍 Thank You 🤍
-        </button>
-    </div>
-</div>
-    <button class="memories-btn" onclick="goToPage4()">
-    🤍 Thank You 🤍
-    </button>
-    <!-- PAGE 4 : THANK YOU (HANDWRITTEN) -->
-<div id="page4" class="page4">
-    <div class="paper">
-        <h1 class="paper-title">Thank You 💖</h1>
-
-        <p class="paper-text">
-            Agar ye chhota sa surprise<br>
-            tumhare chehre pe ek pyari si smile laa saka,<br>
-            to meri mehnat safal ho gayi 🤍<br><br>
-
-            Tumhari dosti meri zindagi ka<br>
-            <span class="highlight">sabse khoobsurat gift</span> hai ✨<br><br>
-
-            Shayad hum hamesha saath na ho,<br>
-            par ye yaadein hamesha mere saath rahengi 💫
-        </p>
-
-        <div class="sign">
-            — From someone who values you 🌸
-        </div>
-    </div>
-</div>
 </body>
 </html>
