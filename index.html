@@ -476,38 +476,44 @@ setInterval(()=>{
 });
     document.addEventListener("click", function(e){
 
-    // === CREATE BUTTON INSIDE SCRIPT ===
-const page2 = document.getElementById("page2");
-const page3 = document.getElementById("page3");
-const page4 = document.getElementById("page4");
+// ===== COUNTDOWN FIX =====
+window.addEventListener("load", function(){
 
-// PAGE-2 BUTTON CREATE
-if(page2){
-    const wrap = document.createElement("div");
-    wrap.className = "memories-btn-wrap";
+    let num = 3;
+    const emo = {3:"⏳",2:"⏰",1:"🎉"};
 
-    const btn = document.createElement("button");
-    btn.id = "toPage3";
-    btn.className = "memories-btn";
-    btn.innerHTML = "🤍 Our Friendship Memories 🤍";
+    const count = document.getElementById("count");
+    const cake = document.getElementById("cake");
+    const knife = document.getElementById("knife");
+    const hint  = document.getElementById("knifeHint");
+    const tick  = document.getElementById("tickSound");
 
-    wrap.appendChild(btn);
-    page2.appendChild(wrap);
+    // Safety check
+    if(!count){
+        alert("Countdown element (#count) missing");
+        return;
+    }
 
-    // CLICK EVENT
-    btn.addEventListener("click", () => {
-        page2.style.display = "none";
-        page3.style.display = "block";
-        window.scrollTo({ top: 0, behavior: "smooth" });
+    count.innerHTML = "⏳ 3";
 
-        // Page-3 background music
-        const m = document.getElementById("memMusic");
-        if(m){
-            m.volume = 0.3;
-            m.play().catch(()=>{});
+    let timer = setInterval(()=>{
+        if(tick){ tick.currentTime = 0; tick.play().catch(()=>{}); }
+        if(navigator.vibrate){ navigator.vibrate(120); }
+
+        num--;
+
+        if(num > 0){
+            count.innerHTML = `${emo[num]} ${num}`;
+        }else{
+            clearInterval(timer);
+            count.style.display = "none";
+
+            if(cake)  cake.style.display  = "block";
+            if(knife) knife.style.display = "block";
+            if(hint)  hint.style.opacity  = 1;
         }
-    });
-}
+    },1000);
+});
 
 </script>
     <div class="memories-btn-wrap">
