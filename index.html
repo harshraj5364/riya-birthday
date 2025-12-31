@@ -386,72 +386,7 @@ Hamesha aise hi khud jaisi rehna —
 beautiful, kind, aur thodi si magical ✨
     </div>
 </div>
-<div class="memories-btn-wrap">
-    <button id="toPage3" class="memories-btn">
-        🤍 Our Friendship Memories 🤍
-    </button>
-    </div>
-<!-- PAGE 3 : MEMORIES -->
-<div id="page3" style="display:none; min-height:100vh; padding:30px;
-background:linear-gradient(135deg,#0b0b14,#1a0f2e,#2b1055); color:white;">
 
-    <h1 style="font-family:'Great Vibes',cursive;
-    font-size:3rem; text-align:center; margin-bottom:20px;">
-        Our Memories 💖
-    </h1>
-
-    <p style="font-family:'Dancing Script',cursive;
-    font-size:1.4rem; text-align:center; max-width:800px;
-    margin:0 auto 40px; line-height:1.8;
-    background:rgba(255,255,255,0.9); color:#333;
-    padding:20px; border-radius:14px;">
-        Hum log ka dost banna,<br>
-        bhagwan ka diya hua<br>
-        <b>sabse achha gift</b> hai 💫
-    </p>
-
-    <div class="mem-grid">
-        <div class="insta mem-photo">
-            <img src="mem1.jpg">
-            <span class="overlay">❤️ 12 Jan 2023</span>
-        </div>
-        <div class="insta mem-photo">
-            <img src="mem2.jpg">
-            <span class="overlay">❤️ Forever</span>
-        </div>
-    </div>
-
-    <div style="text-align:center; margin:60px 0;">
-        <button id="toPage4" class="memories-btn">
-            🤍 Thank You 🤍
-        </button>
-    </div>
-</div>
-    <button class="memories-btn" onclick="goToPage4()">
-    🤍 Thank You 🤍
-    </button>
-    <!-- PAGE 4 : THANK YOU (HANDWRITTEN) -->
-<div id="page4" class="page4">
-    <div class="paper">
-        <h1 class="paper-title">Thank You 💖</h1>
-
-        <p class="paper-text">
-            Agar ye chhota sa surprise<br>
-            tumhare chehre pe ek pyari si smile laa saka,<br>
-            to meri mehnat safal ho gayi 🤍<br><br>
-
-            Tumhari dosti meri zindagi ka<br>
-            <span class="highlight">sabse khoobsurat gift</span> hai ✨<br><br>
-
-            Shayad hum hamesha saath na ho,<br>
-            par ye yaadein hamesha mere saath rahengi 💫
-        </p>
-
-        <div class="sign">
-            — From someone who values you 🌸
-        </div>
-    </div>
-</div>
 <script>
 let num=3;
 const emo={3:"⏳",2:"⏰",1:"🎉"};
@@ -527,47 +462,184 @@ setInterval(()=>{
         btn.onclick = () => {
             page2.style.display = "none";
             page3.style.display = "block";
-            window.scrollTo({ top: 0, behavior: "smooth" })
+            window.scrollTo({ top: 0, behavior: "smooth" });
 
-// ===== COUNTDOWN FIX =====
-window.addEventListener("load", function(){
+            // Page-3 music (optional)
+            const m = document.getElementById("memMusic");
+            if(m){
+                m.volume = 0.3;
+                m.play().catch(()=>{});
+            }
+        };
+    }
 
-    let num = 3;
-    const emo = {3:"⏳",2:"⏰",1:"🎉"};
+});
+    document.addEventListener("click", function(e){
 
-    const count = document.getElementById("count");
-    const cake = document.getElementById("cake");
-    const knife = document.getElementById("knife");
-    const hint  = document.getElementById("knifeHint");
-    const tick  = document.getElementById("tickSound");
+    // === CREATE BUTTON INSIDE SCRIPT ===
+const page2 = document.getElementById("page2");
+const page3 = document.getElementById("page3");
+const page4 = document.getElementById("page4");
 
-    // Safety check
-    if(!count){
-        alert("Countdown element (#count) missing");
+// PAGE-2 BUTTON CREATE
+if(page2){
+    const wrap = document.createElement("div");
+    wrap.className = "memories-btn-wrap";
+
+    const btn = document.createElement("button");
+    btn.id = "toPage3";
+    btn.className = "memories-btn";
+    btn.innerHTML = "🤍 Our Friendship Memories 🤍";
+
+    wrap.appendChild(btn);
+    page2.appendChild(wrap);
+
+    // CLICK EVENT
+    btn.addEventListener("click", () => {
+        page2.style.display = "none";
+        page3.style.display = "block";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+
+        // Page-3 background music
+        const m = document.getElementById("memMusic");
+        if(m){
+            m.volume = 0.3;
+            m.play().catch(()=>{});
+        }
+    });
+}
+
+// PAGE-3 → PAGE-4 BUTTON (already HTML me ho to bhi chalega)
+document.addEventListener("click", (e)=>{
+    if(e.target && e.target.id === "toPage4"){
+        page3.style.display = "none";
+        page4.style.display = "flex";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+});
+        // ===== GLOBAL FUNCTIONS (INLINE ONCLICK WORKS ALWAYS) =====
+function goToPage3(){
+    var p2 = document.getElementById("page2");
+    var p3 = document.getElementById("page3");
+
+    if(!p2 || !p3){
+        alert("page2 or page3 missing");
         return;
     }
 
-    count.innerHTML = "⏳ 3";
+    p2.style.display = "none";
+    p3.style.display = "block";
+    window.scrollTo(0,0);
 
-    let timer = setInterval(()=>{
-        if(tick){ tick.currentTime = 0; tick.play().catch(()=>{}); }
-        if(navigator.vibrate){ navigator.vibrate(120); }
+    var m = document.getElementById("memMusic");
+    if(m){
+        m.volume = 0.3;
+        m.play().catch(()=>{});
+    }
+}
 
-        num--;
+function goToPage4(){
+    var p3 = document.getElementById("page3");
+    var p4 = document.getElementById("page4");
 
-        if(num > 0){
-            count.innerHTML = `${emo[num]} ${num}`;
-        }else{
-            clearInterval(timer);
-            count.style.display = "none";
+    if(!p3 || !p4){
+        alert("page3 or page4 missing");
+        return;
+    }
 
-            if(cake)  cake.style.display  = "block";
-            if(knife) knife.style.display = "block";
-            if(hint)  hint.style.opacity  = 1;
-        }
-    },1000);
-});
+    p3.style.display = "none";
+    p4.style.display = "flex";
+    window.scrollTo(0,0);
+}
 
+// ===== CREATE PAGE-2 BUTTON VIA SCRIPT =====
+window.onload = function(){
+
+    var p2 = document.getElementById("page2");
+    if(!p2){
+        alert("page2 not found");
+        return;
+    }
+
+    var wrap = document.createElement("div");
+    wrap.className = "memories-btn-wrap";
+
+    var btn = document.createElement("button");
+    btn.className = "memories-btn";
+    btn.innerHTML = "🤍 Our Friendship Memories 🤍";
+
+    // 🔥 INLINE CLICK (NO FAIL)
+    btn.setAttribute("onclick","goToPage3()");
+
+    wrap.appendChild(btn);
+    p2.appendChild(wrap);
+};
 </script>
+    <div class="memories-btn-wrap">
+    <button id="toPage3" class="memories-btn">
+        🤍 Our Friendship Memories 🤍
+    </button>
+    </div>
+<!-- PAGE 3 : MEMORIES -->
+<div id="page3" style="display:none; min-height:100vh; padding:30px;
+background:linear-gradient(135deg,#0b0b14,#1a0f2e,#2b1055); color:white;">
+
+    <h1 style="font-family:'Great Vibes',cursive;
+    font-size:3rem; text-align:center; margin-bottom:20px;">
+        Our Memories 💖
+    </h1>
+
+    <p style="font-family:'Dancing Script',cursive;
+    font-size:1.4rem; text-align:center; max-width:800px;
+    margin:0 auto 40px; line-height:1.8;
+    background:rgba(255,255,255,0.9); color:#333;
+    padding:20px; border-radius:14px;">
+        Hum log ka dost banna,<br>
+        bhagwan ka diya hua<br>
+        <b>sabse achha gift</b> hai 💫
+    </p>
+
+    <div class="mem-grid">
+        <div class="insta mem-photo">
+            <img src="mem1.jpg">
+            <span class="overlay">❤️ 12 Jan 2023</span>
+        </div>
+        <div class="insta mem-photo">
+            <img src="mem2.jpg">
+            <span class="overlay">❤️ Forever</span>
+        </div>
+    </div>
+
+    <div style="text-align:center; margin:60px 0;">
+        <button id="toPage4" class="memories-btn">
+            🤍 Thank You 🤍
+        </button>
+    </div>
+</div>
+    <button class="memories-btn" onclick="goToPage4()">
+    🤍 Thank You 🤍
+    </button>
+    <!-- PAGE 4 : THANK YOU (HANDWRITTEN) -->
+<div id="page4" class="page4">
+    <div class="paper">
+        <h1 class="paper-title">Thank You 💖</h1>
+
+        <p class="paper-text">
+            Agar ye chhota sa surprise<br>
+            tumhare chehre pe ek pyari si smile laa saka,<br>
+            to meri mehnat safal ho gayi 🤍<br><br>
+
+            Tumhari dosti meri zindagi ka<br>
+            <span class="highlight">sabse khoobsurat gift</span> hai ✨<br><br>
+
+            Shayad hum hamesha saath na ho,<br>
+            par ye yaadein hamesha mere saath rahengi 💫
+        </p>
+
+        <div class="sign">
+            — From someone who values you 🌸
+        </div>
+    </div>
+</div>
 </body>
 </html>
