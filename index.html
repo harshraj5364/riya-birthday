@@ -388,192 +388,87 @@ beautiful, kind, aur thodi si magical ✨
 </div>
 
 <script>
-let num=3;
-const emo={3:"⏳",2:"⏰",1:"🎉"};
-let count=document.getElementById("count");
-let cake=document.getElementById("cake");
-let knife=document.getElementById("knife");
-let hint=document.getElementById("knifeHint");
-let surprise=document.getElementById("surprise");
-let tick=document.getElementById("tickSound");
+window.onload = function () {
 
-let t=setInterval(()=>{
-    tick.play();
-    if(navigator.vibrate){navigator.vibrate(120);}
-    num--;
-    if(num>0){
-        count.innerHTML=`${emo[num]} ${num}`;
-    }else{
-        clearInterval(t);
-        count.style.display="none";
-        cake.style.display="block";
-        knife.style.display="block";
-        hint.style.opacity=1;
-    }
-},1000);
+    /* ================= COUNTDOWN ================= */
+    let num = 3;
+    const count = document.getElementById("count");
+    const cake  = document.getElementById("cake");
+    const knife = document.getElementById("knife");
+    const hint  = document.getElementById("knifeHint");
+    const tick  = document.getElementById("tickSound");
 
-knife.onclick=()=>{
-    document.getElementById("bgMusic").play().catch(()=>{});
-    document.getElementById("tickSound").play().catch(()=>{});
-    document.getElementById("cutSound").play();
-
-    cake.innerText="🍰";
-    surprise.style.display="block";
-    hint.style.display="none";
-    setTimeout(()=>{
-        page1.style.display="none";
-        page2.style.display="block";
-        window.scrollTo({top:0,behavior:"smooth"});
-        typeName();
-    },1500);
-};
-
-const text="Happy Birthday\nRiya 💖";
-let i=0;
-function typeName(){
-    if(i<text.length){
-        document.getElementById("name").innerHTML+=text.charAt(i);
-        i++;
-        setTimeout(typeName,120);
-    }else{
-        document.getElementById("name").classList.add("glow");
-    }
-}
-
-/* FLOATING HEARTS */
-setInterval(()=>{
-    let h=document.createElement("div");
-    h.className="heart";
-    h.innerText="💖";
-    h.style.left=Math.random()*100+"vw";
-    h.style.fontSize=(15+Math.random()*20)+"px";
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),6000);
-},500);
-    document.getElementById("toPage3").onclick = () => {
-    page2.style.display = "none";
-    page3.style.display = "block";
-    window.scrollTo({ top: 0, behavior: "smooth" });
-};
-    document.addEventListener("DOMContentLoaded", () => {
-
-    const btn = document.getElementById("toPage3");
-    if(btn){
-        btn.onclick = () => {
-            page2.style.display = "none";
-            page3.style.display = "block";
-            window.scrollTo({ top: 0, behavior: "smooth" });
-
-            // Page-3 music (optional)
-            const m = document.getElementById("memMusic");
-            if(m){
-                m.volume = 0.3;
-                m.play().catch(()=>{});
-            }
-        };
+    if (!count) {
+        alert("count element missing");
+        return;
     }
 
-});
-    document.addEventListener("click", function(e){
+    count.innerHTML = "⏳ 3";
 
-    // === CREATE BUTTON INSIDE SCRIPT ===
-const page2 = document.getElementById("page2");
-const page3 = document.getElementById("page3");
-const page4 = document.getElementById("page4");
+    const timer = setInterval(() => {
+        if (tick) { tick.currentTime = 0; tick.play().catch(()=>{}); }
+        num--;
 
-// PAGE-2 BUTTON CREATE
-if(page2){
+        if (num > 0) {
+            count.innerHTML = (num === 2 ? "⏰" : "🎉") + " " + num;
+        } else {
+            clearInterval(timer);
+            count.style.display = "none";
+            cake.style.display  = "block";
+            knife.style.display = "block";
+            hint.style.opacity  = 1;
+        }
+    }, 1000);
+
+    /* ================= CAKE CUT ================= */
+    knife.onclick = function () {
+        document.getElementById("bgMusic")?.play().catch(()=>{});
+        document.getElementById("cutSound")?.play();
+
+        cake.innerText = "🍰";
+        document.getElementById("surprise").style.display = "block";
+
+        setTimeout(() => {
+            document.getElementById("page1").style.display = "none";
+            document.getElementById("page2").style.display = "block";
+            typeName();
+        }, 1200);
+    };
+
+    /* ================= PAGE-2 BUTTON CREATE ================= */
+    const page2 = document.getElementById("page2");
+    const page3 = document.getElementById("page3");
+
     const wrap = document.createElement("div");
     wrap.className = "memories-btn-wrap";
 
     const btn = document.createElement("button");
-    btn.id = "toPage3";
     btn.className = "memories-btn";
-    btn.innerHTML = "🤍 Our Friendship Memories 🤍";
+    btn.innerText = "🤍 Our Friendship Memories 🤍";
+
+    btn.onclick = function () {
+        page2.style.display = "none";
+        page3.style.display = "block";
+        window.scrollTo(0, 0);
+    };
 
     wrap.appendChild(btn);
     page2.appendChild(wrap);
-
-    // CLICK EVENT
-    btn.addEventListener("click", () => {
-        page2.style.display = "none";
-        page3.style.display = "block";
-        window.scrollTo({ top: 0, behavior: "smooth" });
-
-        // Page-3 background music
-        const m = document.getElementById("memMusic");
-        if(m){
-            m.volume = 0.3;
-            m.play().catch(()=>{});
-        }
-    });
-}
-
-// PAGE-3 → PAGE-4 BUTTON (already HTML me ho to bhi chalega)
-document.addEventListener("click", (e)=>{
-    if(e.target && e.target.id === "toPage4"){
-        page3.style.display = "none";
-        page4.style.display = "flex";
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-});
-        // ===== GLOBAL FUNCTIONS (INLINE ONCLICK WORKS ALWAYS) =====
-function goToPage3(){
-    var p2 = document.getElementById("page2");
-    var p3 = document.getElementById("page3");
-
-    if(!p2 || !p3){
-        alert("page2 or page3 missing");
-        return;
-    }
-
-    p2.style.display = "none";
-    p3.style.display = "block";
-    window.scrollTo(0,0);
-
-    var m = document.getElementById("memMusic");
-    if(m){
-        m.volume = 0.3;
-        m.play().catch(()=>{});
-    }
-}
-
-function goToPage4(){
-    var p3 = document.getElementById("page3");
-    var p4 = document.getElementById("page4");
-
-    if(!p3 || !p4){
-        alert("page3 or page4 missing");
-        return;
-    }
-
-    p3.style.display = "none";
-    p4.style.display = "flex";
-    window.scrollTo(0,0);
-}
-
-// ===== CREATE PAGE-2 BUTTON VIA SCRIPT =====
-window.onload = function(){
-
-    var p2 = document.getElementById("page2");
-    if(!p2){
-        alert("page2 not found");
-        return;
-    }
-
-    var wrap = document.createElement("div");
-    wrap.className = "memories-btn-wrap";
-
-    var btn = document.createElement("button");
-    btn.className = "memories-btn";
-    btn.innerHTML = "🤍 Our Friendship Memories 🤍";
-
-    // 🔥 INLINE CLICK (NO FAIL)
-    btn.setAttribute("onclick","goToPage3()");
-
-    wrap.appendChild(btn);
-    p2.appendChild(wrap);
 };
+
+/* ================= NAME TYPING ================= */
+const text = "Happy Birthday\nRiya 💖";
+let i = 0;
+function typeName() {
+    const el = document.getElementById("name");
+    if (i < text.length) {
+        el.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeName, 120);
+    } else {
+        el.classList.add("glow");
+    }
+}
 </script>
     <div class="memories-btn-wrap">
     <button id="toPage3" class="memories-btn">
