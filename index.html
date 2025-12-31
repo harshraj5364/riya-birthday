@@ -1,540 +1,552 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Happy Birthday Riya 💖</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- FONTS -->
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;500;600&family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
-
-<style>
-/* GLOBAL */
-html,body{
-    margin:0;
-    padding:0;
-    width:100%;
-    height:100%;
-    overflow-y:auto;
-    overflow-x:hidden;
-    background:black;
-    font-family:'Segoe UI',sans-serif;
-}
-html{scroll-behavior:smooth;}
-
-/* FLOATING HEARTS */
-.heart{
-    position:fixed;
-    bottom:-10px;
-    font-size:20px;
-    animation:float 6s linear infinite;
-    pointer-events:none;
-}
-@keyframes float{
-    0%{transform:translateY(0);opacity:1}
-    100%{transform:translateY(-110vh);opacity:0}
-}
-
-/* PAGE 1 */
-#page1{
-    min-height:100vh;
-    background:black;
-    color:white;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-}
-
-#count{
-    font-family:'Orbitron',sans-serif;
-    font-size:5.2rem;
-    letter-spacing:6px;
-    color:#ff69b4;
-    text-shadow:0 0 10px #ff69b4,0 0 20px #c77dff;
-    animation:pulse 1s infinite;
-}
-@keyframes pulse{
-    0%{opacity:0}
-    50%{opacity:1}
-    100%{opacity:0}
-}
-
-#cake{
-    display:none;
-    font-size:7rem;
-    animation:bounce 1.5s infinite;
-}
-@keyframes bounce{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-15px)}
-}
-
-#knife{
-    display:none;
-    font-size:3.5rem;
-    cursor:pointer;
-    margin-top:15px;
-    animation:knifeMove 1s infinite alternate;
-}
-@keyframes knifeMove{
-    from{transform:translateX(-8px)}
-    to{transform:translateX(8px)}
-}
-
-/* KNIFE HINT */
-#knifeHint{
-    margin-top:10px;
-    font-family:'Dancing Script',cursive;
-    font-size:1.4rem;
-    color:#ffb6c1;
-    letter-spacing:2px;
-    opacity:0;
-    animation:fadeHint 1.5s ease forwards, glowHint 2.5s ease-in-out infinite;
-}
-@keyframes fadeHint{
-    from{opacity:0; transform:translateY(8px);}
-    to{opacity:1; transform:translateY(0);}
-}
-@keyframes glowHint{
-    0%{text-shadow:0 0 6px #ff69b4;}
-    50%{text-shadow:0 0 16px #c77dff;}
-    100%{text-shadow:0 0 6px #ff69b4;}
-}
-
-/* SURPRISE TEXT */
-#surprise{
-    display:none;
-    font-family:'Great Vibes',cursive;
-    font-size:3rem;
-    color:#ffd1e8;
-    letter-spacing:3px;
-    margin-top:18px;
-    animation:surprisePop 1.4s ease forwards;
-    text-shadow:0 0 10px #ff69b4,0 0 25px #c77dff;
-}
-@keyframes surprisePop{
-    from{opacity:0;transform:scale(0.6) translateY(10px)}
-    to{opacity:1;transform:scale(1) translateY(0)}
-}
-
-/* PAGE 2 */
-#page2{
-    display:none;
-    min-height:100vh;
-    background:
-        radial-gradient(circle at top right, rgba(255,105,180,0.35), transparent 40%),
-        radial-gradient(circle at bottom left, rgba(157,78,221,0.35), transparent 45%),
-        linear-gradient(135deg,#0b0b14,#1a0f2e,#2b1055);
-    padding:20px;
-    color:white;
-}
-
-/* NAME */
-#name{
-    font-family:'Great Vibes',cursive;
-    font-size:3.6rem;
-    text-align:center;
-    white-space:pre-line;
-}
-.glow{
-    animation:gradientGlow 3s ease-in-out infinite;
-}
-@keyframes gradientGlow{
-    0%{text-shadow:0 0 6px #ff69b4,0 0 12px #c77dff;}
-    50%{text-shadow:0 0 20px #9d4edd,0 0 40px #ff85c1;}
-    100%{text-shadow:0 0 6px #ff69b4,0 0 12px #c77dff;}
-}
-
-/* PHOTO BLOCKS */
-.block{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    margin:40px 0;
-}
-.block:nth-child(even){flex-direction:row-reverse;}
-
-.msg{
-    font-family:'Dancing Script',cursive;
-    font-size:1.2rem;
-    background:rgba(255,255,255,0.9);
-    color:#333;
-    padding:14px 18px;
-    border-radius:12px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.35);
-}
-
-.insta{
-    width:140px;
-    background: linear-gradient(135deg, #ff69b4, #c77dff, #9d4edd);
-    padding:6px;
-    border-radius:5px;
-    box-shadow:0 10px 20px rgba(0,0,0,0.4);
-}
-.insta img{width:100%;border-radius:14px}
-
-.circle{
-    width:170px;height:170px;
-    border-radius:50%;
-    overflow:hidden;
-    border:5px solid #ff69b4;
-    box-shadow:0 0 25px rgba(255,105,180,0.6);
-}
-.circle img{width:100%;height:100%;object-fit:cover}
-
-.star{
-    width:150px;
-    clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
-    overflow:hidden;
-    box-shadow:0 0 25px rgba(157,78,221,0.8);
-}
-.star img{width:100%;height:100%;object-fit:cover}
-
-.polaroid{
-    width:150px;
-    background:white;
-    padding:8px 8px 20px;
-    border-radius:10px;
-    transform:rotate(-4deg);
-    box-shadow:0 12px 25px rgba(0,0,0,0.4);
-}
-.polaroid img{width:100%;border-radius:8px}
-
-/* PAPER MESSAGE */
-.box{
-    margin:50px auto;
-    padding:28px;
-    max-width:90%;
-    background:repeating-linear-gradient(white,white 28px,#f3e6ff 29px);
-    color:#2f2f3a;
-    font-family:'Dancing Script',cursive;
-    font-size:1.35rem;
-    line-height:1.9;
-    border-radius:12px;
-    box-shadow:0 15px 30px rgba(0,0,0,0.35);
-    transform:rotate(0.7deg);
-}
-.box::first-letter{
-    font-size:2.6rem;
-    font-weight:600;
-    color:#ff69b4;
-    float:left;
-    margin-right:6px;
-}
-    /* 🔥 SCROLL REVEAL + FADE-IN */
-.reveal{
-    opacity:0;
-    transform:translateY(40px);
-}
-
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
-    transition:all 1.1s ease;
-}
-    .memories-btn-wrap{
-    text-align:center;
-    margin:60px 0;
-}
-
-.memories-btn{
-    padding:16px 42px;
-    font-size:1.25rem;
-    font-family:'Dancing Script',cursive;
-    border:none;
-    border-radius:50px;
-    cursor:pointer;
-    color:white;
-
-    background:linear-gradient(135deg,#ff69b4,#c77dff,#9d4edd);
-    box-shadow:
-        0 10px 30px rgba(157,78,221,0.5),
-        0 0 20px rgba(255,105,180,0.4);
-
-    transition:all 0.35s ease;
-}
-.memories-btn:hover{ transform:scale(1.08); }
-.memories-btn:active{ transform:scale(0.95); }
-/* PAGE 4 BACKGROUND */
-.page4{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:linear-gradient(135deg,#0b0b14,#1a0f2e,#2b1055);
-    padding:30px;
-}
-
-/* PAPER STYLE */
-.paper{
-    background:
-        repeating-linear-gradient(
-            white,
-            white 28px,
-            #f1e9ff 29px
-        );
-    max-width:650px;
-    width:100%;
-    padding:40px 35px;
-    border-radius:14px;
-    box-shadow:
-        0 25px 45px rgba(0,0,0,0.45);
-    transform:rotate(-0.8deg);
-}
-
-/* TITLE (CALLIGRAPHY STYLE) */
-.paper-title{
-    font-family:'Great Vibes',cursive;
-    font-size:3.2rem;
-    text-align:center;
-    margin-bottom:20px;
-    color:#9d4edd;
-}
-
-/* HANDWRITTEN TEXT */
-.paper-text{
-    font-family:'Dancing Script',cursive;
-    font-size:1.45rem;
-    color:#2b2b2b;
-    line-height:1.9;
-    letter-spacing:0.4px;
-}
-
-/* INK VARIATION FEEL */
-.paper-text span,
-.paper-text br{
-    display:inline-block;
-}
-
-/* HIGHLIGHT WORD */
-.highlight{
-    color:#ff69b4;
-    font-weight:600;
-}
-
-/* SIGNATURE */
-.sign{
-    margin-top:30px;
-    text-align:right;
-    font-family:'Dancing Script',cursive;
-    font-size:1.2rem;
-    color:#555;
-}
-</style>
-</head>
-
-<body>
-
-<audio id="bgMusic" loop>
-    <source src="music.mp3">
-</audio>
-<audio id="cutSound"><source src="cut.mp3"></audio>
-<audio id="tickSound"><source src="tick.mp3"></audio>
-
-<!-- PAGE 1 -->
-<div id="page1">
-    <div id="count">⏳ 3</div>
-    <div id="cake">🎂</div>
-    <div id="knife">🔪</div>
-    <div id="knifeHint">✨ tap to cut ✨</div>
-    <div id="surprise">Surprise ✨</div>
-</div>
-
-<!-- PAGE 2 -->
-<div id="page2">
-    <h1 id="name"></h1>
-
-    <div class="block">
-        <div class="insta big"><img src="photo1.jpg"></div>
-        <div class="msg">Tumhari smile Instagram feed jaisi perfect hai 💖</div>
-    </div>
-
-    <div class="block">
-        <div class="circle"><img src="photo2.jpg"></div>
-        <div class="msg">Simple si, par sabse zyada special 🌸</div>
-    </div>
-
-    <div class="block">
-        <div class="insta"><img src="photo3.jpg"></div>
-        <div class="msg">Star to tum ho ✨ bina filter ke</div>
-    </div>
-
-    <div class="block">
-        <div class="circle"><img src="photo4.jpg"></div>
-        <div class="msg">Ye photo ek memory jaisi lagti hai 📸</div>
-    </div>
-
-    <div class="block">
-        <div class="insta"><img src="photo5.jpg"></div>
-        <div class="msg">Bas aise hi hamesha khush rehna 💕</div>
-    </div>
-
-    <div class="box">
-Riya💕<br><br>
-“Kuchh log lafzon me bayan nahi hote,  
-bas mehsoos kiye jaate hain…” ✨  
-Aur tum unhi logon me se ho 💖<br><br>
-
-Tumhari smile me ek alag si warmth hai,  
-jo bina bole hi din ko thoda aur beautiful bana deti hai 🌼  
-Tumhari simplicity aur tumhari vibe —  
-dono hi bahut special hain ✨<br><br>
-
-🎂 Happy Birthday Riya 💖  
-Hamesha aise hi khud jaisi rehna —  
-beautiful, kind, aur thodi si magical ✨
-    </div>
-</div>
-
-<script>
-window.onload = function () {
-
-    /* ================= COUNTDOWN ================= */
-    let num = 3;
-    const count = document.getElementById("count");
-    const cake  = document.getElementById("cake");
-    const knife = document.getElementById("knife");
-    const hint  = document.getElementById("knifeHint");
-    const tick  = document.getElementById("tickSound");
-
-    if (!count) {
-        alert("count element missing");
-        return;
-    }
-
-    count.innerHTML = "⏳ 3";
-
-    const timer = setInterval(() => {
-        if (tick) { tick.currentTime = 0; tick.play().catch(()=>{}); }
-        num--;
-
-        if (num > 0) {
-            count.innerHTML = (num === 2 ? "⏰" : "🎉") + " " + num;
-        } else {
-            clearInterval(timer);
-            count.style.display = "none";
-            cake.style.display  = "block";
-            knife.style.display = "block";
-            hint.style.opacity  = 1;
+    <meta charset="UTF-8">
+    <title>Happy Birthday Riya 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;500;600&family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        /* GLOBAL */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: black;
+            font-family: 'Segoe UI', sans-serif;
         }
-    }, 1000);
+        html { scroll-behavior: smooth; }
 
-    /* ================= CAKE CUT ================= */
-    knife.onclick = function () {
-        document.getElementById("bgMusic")?.play().catch(()=>{});
-        document.getElementById("cutSound")?.play();
+        /* FLOATING HEARTS */
+        .heart {
+            position: fixed;
+            bottom: -10px;
+            font-size: 20px;
+            animation: float 6s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-110vh); opacity: 0; }
+        }
 
-        cake.innerText = "🍰";
-        document.getElementById("surprise").style.display = "block";
+        /* PAGE 1 */
+        #page1 {
+            min-height: 100vh;
+            background: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
-        setTimeout(() => {
-            document.getElementById("page1").style.display = "none";
-            document.getElementById("page2").style.display = "block";
-            typeName();
-        }, 1200);
-    };
+        #count {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5.2rem;
+            letter-spacing: 6px;
+            color: #ff69b4;
+            text-shadow: 0 0 10px #ff69b4, 0 0 20px #c77dff;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
 
-    /* ================= PAGE-2 BUTTON CREATE ================= */
-    const page2 = document.getElementById("page2");
-    const page3 = document.getElementById("page3");
+        #cake {
+            display: none;
+            font-size: 7rem;
+            animation: bounce 1.5s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
 
-    const wrap = document.createElement("div");
-    wrap.className = "memories-btn-wrap";
+        #knife {
+            display: none;
+            font-size: 3.5rem;
+            cursor: pointer;
+            margin-top: 15px;
+            animation: knifeMove 1s infinite alternate;
+        }
+        @keyframes knifeMove {
+            from { transform: translateX(-8px); }
+            to { transform: translateX(8px); }
+        }
 
-    const btn = document.createElement("button");
-    btn.className = "memories-btn";
-    btn.innerText = "🤍 Our Friendship Memories 🤍";
+        /* KNIFE HINT */
+        #knifeHint {
+            margin-top: 10px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            color: #ffb6c1;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fadeHint 1.5s ease forwards, glowHint 2.5s ease-in-out infinite;
+        }
+        @keyframes fadeHint {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes glowHint {
+            0% { text-shadow: 0 0 6px #ff69b4; }
+            50% { text-shadow: 0 0 16px #c77dff; }
+            100% { text-shadow: 0 0 6px #ff69b4; }
+        }
 
-    btn.onclick = function () {
-        page2.style.display = "none";
-        page3.style.display = "block";
-        window.scrollTo(0, 0);
-    };
+        /* SURPRISE TEXT */
+        #surprise {
+            display: none;
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #ffd1e8;
+            letter-spacing: 3px;
+            margin-top: 18px;
+            animation: surprisePop 1.4s ease forwards;
+            text-shadow: 0 0 10px #ff69b4, 0 0 25px #c77dff;
+        }
+        @keyframes surprisePop {
+            from { opacity: 0; transform: scale(0.6) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
 
-    wrap.appendChild(btn);
-    page2.appendChild(wrap);
-};
+        /* PAGE 2 */
+        #page2 {
+            display: none;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at top right, rgba(255,105,180,0.35), transparent 40%),
+                radial-gradient(circle at bottom left, rgba(157,78,221,0.35), transparent 45%),
+                linear-gradient(135deg, #0b0b14, #1a0f2e, #2b1055);
+            padding: 20px;
+            color: white;
+        }
 
-/* ================= NAME TYPING ================= */
-const text = "Happy Birthday\nRiya 💖";
-let i = 0;
-function typeName() {
-    const el = document.getElementById("name");
-    if (i < text.length) {
-        el.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeName, 120);
-    } else {
-        el.classList.add("glow");
-    }
-}
-</script>
-    <div class="memories-btn-wrap">
-    <button id="toPage3" class="memories-btn">
-        🤍 Our Friendship Memories 🤍
-    </button>
+        /* NAME */
+        #name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.6rem;
+            text-align: center;
+            white-space: pre-line;
+        }
+        .glow {
+            animation: gradientGlow 3s ease-in-out infinite;
+        }
+        @keyframes gradientGlow {
+            0% { text-shadow: 0 0 6px #ff69b4, 0 0 12px #c77dff; }
+            50% { text-shadow: 0 0 20px #9d4edd, 0 0 40px #ff85c1; }
+            100% { text-shadow: 0 0 6px #ff69b4, 0 0 12px #c77dff; }
+        }
+
+        /* PHOTO BLOCKS */
+        .block {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 40px 0;
+        }
+        .block:nth-child(even) { flex-direction: row-reverse; }
+
+        .msg {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2rem;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            padding: 14px 18px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+        }
+
+        .insta {
+            width: 140px;
+            background: linear-gradient(135deg, #ff69b4, #c77dff, #9d4edd);
+            padding: 6px;
+            border-radius: 5px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+        .insta img { width: 100%; border-radius: 14px; }
+
+        .circle {
+            width: 170px; height: 170px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #ff69b4;
+            box-shadow: 0 0 25px rgba(255,105,180,0.6);
+        }
+        .circle img { width: 100%; height: 100%; object-fit: cover; }
+
+        .star {
+            width: 150px;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(157,78,221,0.8);
+        }
+        .star img { width: 100%; height: 100%; object-fit: cover; }
+
+        .polaroid {
+            width: 150px;
+            background: white;
+            padding: 8px 8px 20px;
+            border-radius: 10px;
+            transform: rotate(-4deg);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+        }
+        .polaroid img { width: 100%; border-radius: 8px; }
+
+        /* PAPER MESSAGE */
+        .box {
+            margin: 50px auto;
+            padding: 28px;
+            max-width: 90%;
+            background: repeating-linear-gradient(white, white 28px, #f3e6ff 29px);
+            color: #2f2f3a;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.35rem;
+            line-height: 1.9;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.35);
+            transform: rotate(0.7deg);
+        }
+        .box::first-letter {
+            font-size: 2.6rem;
+            font-weight: 600;
+            color: #ff69b4;
+            float: left;
+            margin-right: 6px;
+        }
+
+        /* SCROLL REVEAL + FADE-IN */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 1.1s ease;
+        }
+
+        .memories-btn-wrap {
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .memories-btn {
+            padding: 16px 42px;
+            font-size: 1.25rem;
+            font-family: 'Dancing Script', cursive;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            color: white;
+            background: linear-gradient(135deg, #ff69b4, #c77dff, #9d4edd);
+            box-shadow: 0 10px 30px rgba(157,78,221,0.5), 0 0 20px rgba(255,105,180,0.4);
+            transition: all 0.35s ease;
+        }
+        .memories-btn:hover { transform: scale(1.08); }
+        .memories-btn:active { transform: scale(0.95); }
+
+        /* PAGE 3 */
+        #page3 {
+            display: none;
+            min-height: 100vh;
+            padding: 30px;
+            background: linear-gradient(135deg, #0b0b14, #1a0f2e, #2b1055);
+            color: white;
+        }
+        .mem-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .mem-photo {
+            position: relative;
+            width: 140px;
+        }
+        .mem-photo img {
+            width: 100%;
+            border-radius: 14px;
+        }
+        .overlay {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        /* PAGE 4 BACKGROUND */
+        .page4 {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0b0b14, #1a0f2e, #2b1055);
+            padding: 30px;
+        }
+
+        /* PAPER STYLE */
+        .paper {
+            background: repeating-linear-gradient(white, white 28px, #f1e9ff 29px);
+            max-width: 650px;
+            width: 100%;
+            padding: 40px 35px;
+            border-radius: 14px;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.45);
+            transform: rotate(-0.8deg);
+        }
+
+        /* TITLE (CALLIGRAPHY STYLE) */
+        .paper-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.2rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #9d4edd;
+        }
+
+        /* HANDWRITTEN TEXT */
+        .paper-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.45rem;
+            color: #2b2b2b;
+            line-height: 1.9;
+            letter-spacing: 0.4px;
+        }
+
+        /* INK VARIATION FEEL */
+        .paper-text span, .paper-text br {
+            display: inline-block;
+        }
+
+        /* HIGHLIGHT WORD */
+        .highlight {
+            color: #ff69b4;
+            font-weight: 600;
+        }
+
+        /* SIGNATURE */
+        .sign {
+            margin-top: 30px;
+            text-align: right;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="cutSound">
+        <source src="cut.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="tickSound">
+        <source src="tick.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="memMusic" loop>
+        <source src="memMusic.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- PAGE 1 -->
+    <div id="page1">
+        <div id="count">⏳ 3</div>
+        <div id="cake">🎂</div>
+        <div id="knife">🔪</div>
+        <div id="knifeHint">✨ tap to cut ✨</div>
+        <div id="surprise">Surprise ✨</div>
     </div>
-<!-- PAGE 3 : MEMORIES -->
-<div id="page3" style="display:none; min-height:100vh; padding:30px;
-background:linear-gradient(135deg,#0b0b14,#1a0f2e,#2b1055); color:white;">
 
-    <h1 style="font-family:'Great Vibes',cursive;
-    font-size:3rem; text-align:center; margin-bottom:20px;">
-        Our Memories 💖
-    </h1>
-
-    <p style="font-family:'Dancing Script',cursive;
-    font-size:1.4rem; text-align:center; max-width:800px;
-    margin:0 auto 40px; line-height:1.8;
-    background:rgba(255,255,255,0.9); color:#333;
-    padding:20px; border-radius:14px;">
-        Hum log ka dost banna,<br>
-        bhagwan ka diya hua<br>
-        <b>sabse achha gift</b> hai 💫
-    </p>
-
-    <div class="mem-grid">
-        <div class="insta mem-photo">
-            <img src="mem1.jpg">
-            <span class="overlay">❤️ 12 Jan 2023</span>
+    <!-- PAGE 2 -->
+    <div id="page2">
+        <h1 id="name"></h1>
+        <div class="block">
+            <div class="insta"><img src="photo1.jpg" alt="Photo 1"></div>
+            <div class="msg">Tumhari smile Instagram feed jaisi perfect hai 💖</div>
         </div>
-        <div class="insta mem-photo">
-            <img src="mem2.jpg">
-            <span class="overlay">❤️ Forever</span>
+        <div class="block">
+            <div class="circle"><img src="photo2.jpg" alt="Photo 2"></div>
+            <div class="msg">Simple si, par sabse zyada special 🌸</div>
+        </div>
+        <div class="block">
+            <div class="insta"><img src="photo3.jpg" alt="Photo 3"></div>
+            <div class="msg">Star to tum ho ✨ bina filter ke</div>
+        </div>
+        <div class="block">
+            <div class="circle"><img src="photo4.jpg" alt="Photo 4"></div>
+            <div class="msg">Ye photo ek memory jaisi lagti hai 📸</div>
+        </div>
+        <div class="block">
+            <div class="insta"><img src="photo5.jpg" alt="Photo 5"></div>
+            <div class="msg">Bas aise hi hamesha khush rehna 💕</div>
+        </div>
+        <div class="box">
+            Riya💕<br><br>
+            “Kuchh log lafzon me bayan nahi hote,<br>
+            bas mehsoos kiye jaate hain…” ✨<br><br>
+            Aur tum unhi logon me se ho 💖<br><br>
+            Tumhari smile me ek alag si warmth hai,<br>
+            jo bina bole hi din ko thoda aur beautiful bana deti hai 🌼<br><br>
+            Tumhari simplicity aur tumhari vibe —<br>
+            dono hi bahut special hain ✨<br><br>
+            🎂 Happy Birthday Riya 💖<br><br>
+            Hamesha aise hi khud jaisi rehna —<br>
+            beautiful, kind, aur thodi si magical ✨
+        </div>
+        <div class="memories-btn-wrap">
+            <button id="toPage3" class="memories-btn">🤍 Our Friendship Memories 🤍</button>
         </div>
     </div>
 
-    <div style="text-align:center; margin:60px 0;">
-        <button id="toPage4" class="memories-btn">
-            🤍 Thank You 🤍
-        </button>
-    </div>
-</div>
-    <button class="memories-btn" onclick="goToPage4()">
-    🤍 Thank You 🤍
-    </button>
-    <!-- PAGE 4 : THANK YOU (HANDWRITTEN) -->
-<div id="page4" class="page4">
-    <div class="paper">
-        <h1 class="paper-title">Thank You 💖</h1>
-
-        <p class="paper-text">
-            Agar ye chhota sa surprise<br>
-            tumhare chehre pe ek pyari si smile laa saka,<br>
-            to meri mehnat safal ho gayi 🤍<br><br>
-
-            Tumhari dosti meri zindagi ka<br>
-            <span class="highlight">sabse khoobsurat gift</span> hai ✨<br><br>
-
-            Shayad hum hamesha saath na ho,<br>
-            par ye yaadein hamesha mere saath rahengi 💫
+    <!-- PAGE 3 : MEMORIES -->
+    <div id="page3">
+        <h1 style="font-family:'Great Vibes',cursive; font-size:3rem; text-align:center; margin-bottom:20px;">
+            Our Memories 💖
+        </h1>
+        <p style="font-family:'Dancing Script',cursive; font-size:1.4rem; text-align:center; max-width:800px; margin:0 auto 40px; line-height:1.8; background:rgba(255,255,255,0.9); color:#333; padding:20px; border-radius:14px;">
+            Hum log ka dost banna,<br>
+            bhagwan ka diya hua<br>
+            <b>sabse achha gift</b> hai 💫
         </p>
-
-        <div class="sign">
-            — From someone who values you 🌸
+        <div class="mem-grid">
+            <div class="mem-photo">
+                <img src="mem1.jpg" alt="Memory 1">
+                <span class="overlay">❤️ 12 Jan 2023</span>
+            </div>
+            <div class="mem-photo">
+                <img src="mem2.jpg" alt="Memory 2">
+                <span class="overlay">❤️ Forever</span>
+            </div>
+        </div>
+        <div style="text-align:center; margin:60px 0;">
+            <button id="toPage4" class="memories-btn">🤍 Thank You 🤍</button>
         </div>
     </div>
-</div>
+
+    <!-- PAGE 4 : THANK YOU (HANDWRITTEN) -->
+    <div id="page4" class="page4">
+        <div class="paper">
+            <h1 class="paper-title">Thank You 💖</h1>
+            <p class="paper-text">
+                                Agar ye chhota sa surprise<br>
+                tumhare chehre pe ek pyari si smile laa saka,<br>
+                to meri mehnat safal ho gayi 🤍<br><br>
+
+                Tumhari dosti meri zindagi ka<br>
+                <span class="highlight">sabse khoobsurat gift</span> hai ✨<br><br>
+
+                Shayad hum hamesha saath na ho,<br>
+                par ye yaadein hamesha mere saath rahengi 💫
+            </p>
+
+            <div class="sign">
+                — From someone who values you 🌸
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let num = 3;
+        const emo = { 3: "⏳", 2: "⏰", 1: "🎉" };
+        let count = document.getElementById("count");
+        let cake = document.getElementById("cake");
+        let knife = document.getElementById("knife");
+        let hint = document.getElementById("knifeHint");
+        let surprise = document.getElementById("surprise");
+        let tick = document.getElementById("tickSound");
+
+        let t = setInterval(() => {
+            tick.play().catch(() => {});
+            if (navigator.vibrate) navigator.vibrate(120);
+            num--;
+            if (num > 0) {
+                count.innerHTML = `${emo[num]} ${num}`;
+            } else {
+                clearInterval(t);
+                count.style.display = "none";
+                cake.style.display = "block";
+                knife.style.display = "block";
+                hint.style.opacity = 1;
+            }
+        }, 1000);
+
+        knife.onclick = () => {
+            document.getElementById("bgMusic").play().catch(() => {});
+            document.getElementById("tickSound").play().catch(() => {});
+            document.getElementById("cutSound").play();
+            cake.innerText = "🍰";
+            surprise.style.display = "block";
+            hint.style.display = "none";
+            setTimeout(() => {
+                document.getElementById("page1").style.display = "none";
+                document.getElementById("page2").style.display = "block";
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                typeName();
+            }, 1500);
+        };
+
+        const text = "Happy Birthday\nRiya 💖";
+        let i = 0;
+        function typeName() {
+            if (i < text.length) {
+                document.getElementById("name").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeName, 120);
+            } else {
+                document.getElementById("name").classList.add("glow");
+            }
+        }
+
+        /* FLOATING HEARTS */
+        setInterval(() => {
+            let h = document.createElement("div");
+            h.className = "heart";
+            h.innerText = "💖";
+            h.style.left = Math.random() * 100 + "vw";
+            h.style.fontSize = (15 + Math.random() * 20) + "px";
+            document.body.appendChild(h);
+            setTimeout(() => h.remove(), 6000);
+        }, 500);
+
+        /* PAGE TRANSITIONS */
+        document.getElementById("toPage3").addEventListener("click", () => {
+            document.getElementById("page2").style.display = "none";
+            document.getElementById("page3").style.display = "block";
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            const m = document.getElementById("memMusic");
+            if (m) {
+                m.volume = 0.3;
+                m.play().catch(() => {});
+            }
+        });
+
+        document.getElementById("toPage4").addEventListener("click", () => {
+            document.getElementById("page3").style.display = "none";
+            document.getElementById("page4").style.display = "flex";
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        /* SCROLL REVEAL */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                }
+            });
+        });
+        document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
